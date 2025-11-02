@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "chloe";
+  font-style: bold;
+  font-weight: 700;
+  src: url("./assets/fonts/Chloe-Regular.otf") format("opentype");
+}
+
+@theme {
+  --font-chloe: "chloe", sans-serif;
+  --color-peach: #f9d2a7;
+}
+
+#root {
+  height: full;
+  width: 100dvw;
+  font-family: "chloe", "sans-serif";
+  margin: 0 auto;
+  background-color: #b7503d;
+  background-image: url("./assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+}
+
+@media screen and (max-width: 1080px) {
+
+  #root {
+    background-color: #b7503d;
+    background-size: cover;
+  }
+
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

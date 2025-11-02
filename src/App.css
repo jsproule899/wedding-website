@@ -10,28 +10,96 @@
 @theme {
   --font-chloe: "chloe", sans-serif;
   --color-peach: #f9d2a7;
-}
+  --color-background: #b7503d;
 
-#root {
-  height: full;
-  width: 100dvw;
-  font-family: "chloe", "sans-serif";
-  margin: 0 auto;
-  background-color: #b7503d;
-  background-image: url("./assets/background.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  text-align: center;
-}
+  --animate-fade-in: fade-in 2s ease-in;
 
-@media screen and (max-width: 1080px) {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
 
-  #root {
-    background-color: #b7503d;
-    background-size: cover;
+    to {
+      opacity: 100%
+    }
+
+  }
+
+  --animate-grow-top-left: grow-top-left 1.25s ease-in;
+  --animate-grow-top-right: grow-top-right 0.75s ease-in;
+  --animate-grow-bottom-left: grow-bottom-left 1s ease-in;
+  --animate-grow-bottom-right: grow-bottom-right 1.5s ease-in;
+  --animate-wiggle: wiggle 5s ease-in-out infinite;
+
+  @keyframes wiggle {
+
+    0%,
+    100% {
+      transform: rotate(1deg);
+      transform-origin: bottom left;
+    }
+
+    50% {
+      transform: rotate(-1deg);
+      transform-origin: bottom left;
+    }
+  }
+
+
+  @keyframes grow-top-left {
+    from {
+      transform: translate(-400px, -400px);
+    }
+
+    to {
+      transform: none;
+
+    }
+  }
+
+  @keyframes grow-top-right {
+    from {
+      transform: translate(400px, 400px);
+    }
+
+    to {
+      transform: none;
+
+    }
+  }
+
+  @keyframes grow-bottom-left {
+    from {
+      transform: translate(-400px, 400px);
+    }
+
+    to {
+      transform: none;
+
+    }
+  }
+
+  @keyframes grow-bottom-right {
+    from {
+      transform: translate(400px, 400px);
+    }
+
+    to {
+      transform: none;
+
+    }
   }
 
 }
+
+#root {
+
+  font-family: "chloe", "sans-serif";
+  margin: 0 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 1080px) {}
 
 
 @keyframes logo-spin {
@@ -48,12 +116,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

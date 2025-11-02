@@ -2,7 +2,7 @@
 const NavBar = () => {
     return (
         <div className="h-10 mb-20 text-xl sm:text-2xl">
-            <ol className="flex flex-row justify-center-safe m-2 space-x-5 sm:space-x-5 ">
+            <ol className="flex flex-row justify-center-safe my-10 space-x-5 sm:space-x-10">
                 <li>
                     <a href="#Home" className="hover:text-peach text-white visited:text-white" >HOME</a>
                 </li>

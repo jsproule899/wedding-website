@@ -1,10 +1,6 @@
 :root {
-  color: rgba(255, 255, 255, 0.87);
+  color: white;
   background-color: #b7503d;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: light) {}

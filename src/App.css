@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @font-face {
   font-family: "chloe";
-  font-style: bold;
-  font-weight: 700;
+  font-style: normal;
+  font-weight: 400;
   src: url("./assets/fonts/Chloe-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "bacalisties";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Bacalisties.ttf") format("TrueType");
 }
 
 @theme {
   --font-chloe: "chloe", sans-serif;
-  --color-peach: #f9d2a7;
-  --color-background: #b7503d;
+  --font-raleway: "Raleway", sans-serif;
+  --font-bacalisties: "bacalisties", serif; 
+  --color-primary: #b7503d;
+  --color-secondary: #f9d2a7;
+  --color-highlight: #ed8547;
 
   --animate-fade-in: fade-in 2s ease-in;
 
@@ -20,38 +31,42 @@
     }
 
     to {
-      opacity: 100%
+      opacity: 100%;
     }
 
   }
 
-  --animate-grow-top-left: grow-top-left 1.25s ease-in;
-  --animate-grow-top-right: grow-top-right 0.75s ease-in;
-  --animate-grow-bottom-left: grow-bottom-left 1s ease-in;
-  --animate-grow-bottom-right: grow-bottom-right 1.5s ease-in;
+  --animate-grow-top-left: grow-top-left 1.25s ease-in,
+  wiggle 10s 1.25s ease-in-out infinite;
+  --animate-grow-top-right: grow-top-right 0.75s ease-in,
+  wiggle 5s 0.75s ease-in-out infinite;
+  --animate-grow-bottom-left: grow-bottom-left 1s ease-in,
+  wiggle 10s 1s ease-in-out infinite;
+  --animate-grow-bottom-right: grow-bottom-right 1.5s ease-in,
+  wiggle 10s 1.5s ease-in-out infinite;
   --animate-wiggle: wiggle 5s ease-in-out infinite;
 
   @keyframes wiggle {
 
     0%,
     100% {
-      transform: rotate(1deg);
-      transform-origin: bottom left;
+      transform: rotate(1.5deg);
     }
 
     50% {
-      transform: rotate(-1deg);
-      transform-origin: bottom left;
+      transform: rotate(-1.5deg);
     }
   }
 
 
   @keyframes grow-top-left {
     from {
-      transform: translate(-400px, -400px);
+      opacity: 0.25;
+      transform: translate(-400px, -400px) rotate(60deg);
     }
 
     to {
+      opacity: 1;
       transform: none;
 
     }
@@ -59,10 +74,12 @@
 
   @keyframes grow-top-right {
     from {
-      transform: translate(400px, 400px);
+      opacity: 0.25;
+      transform: translate(400px, 400px) rotate(1deg);
     }
 
     to {
+      opacity: 1;
       transform: none;
 
     }
@@ -70,10 +87,12 @@
 
   @keyframes grow-bottom-left {
     from {
-      transform: translate(-400px, 400px);
+      opacity: 0.25;
+      transform: translate(-400px, 400px) rotate(1deg);
     }
 
     to {
+      opacity: 1;
       transform: none;
 
     }
@@ -81,15 +100,16 @@
 
   @keyframes grow-bottom-right {
     from {
-      transform: translate(400px, 400px);
+      opacity: 0.5;
+      transform: translate(400px, 400px) rotate(1deg);
     }
 
     to {
       transform: none;
+      opacity: 1;
 
     }
   }
-
 }
 
 #root {
@@ -99,7 +119,7 @@
   text-align: center;
 }
 
-@media screen and (max-width: 1080px) {}
+
 
 
 @keyframes logo-spin {

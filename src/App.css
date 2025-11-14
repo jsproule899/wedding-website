@@ -15,10 +15,19 @@
   src: url("./assets/fonts/Bacalisties.ttf") format("TrueType");
 }
 
+@font-face {
+  font-family: "minerva-modern";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/fonnts.com-MinervaModern_Regular.otf") format("opentype");
+}
+
+
 @theme {
   --font-chloe: "chloe", sans-serif;
   --font-raleway: "Raleway", sans-serif;
-  --font-bacalisties: "bacalisties", serif; 
+  --font-bacalisties: "bacalisties", serif;
+  --font-minerva: "minerva-modern", sans-serif; 
   --color-primary: #b7503d;
   --color-secondary: #f9d2a7;
   --color-highlight: #ed8547;

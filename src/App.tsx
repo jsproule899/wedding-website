@@ -12,6 +12,7 @@ import Accomodation from './pages/Accomodation';
 import GettingThere from './pages/GettingThere';
 import WeddingParty from './pages/WeddingParty';
 import Gifts from './pages/Gifts';
+import Timeline from './pages/Timeline';
 
 
 
@@ -55,9 +56,7 @@ function App() {
         <GettingThere />
         <Accomodation />
         <Menu />
-        <FadeSection id="Timeline">
-          <h1>The timings</h1>
-        </FadeSection>
+        <Timeline />
         <RSVP guestOne={guestOne} guestTwo={guestTwo} family={family} plusOne={plusOne} setPlusOne={setPlusOne} />
         <Gifts />
       </div>

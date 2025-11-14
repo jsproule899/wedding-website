@@ -8,7 +8,7 @@ const NavBar = () => {
         { name: "TRAVEL", href: "#Travel" },
         { name: "ACCOMODATION", href: "#Accomodation" },
         { name: "MENU", href: "#Menu" },
-        { name: "INFO", href: "#Info" },
+        { name: "TIMELINE", href: "#Timeline" },
         { name: "RSVP", href: "#RSVP" },
         { name: "GIFTS", href: "#Gifts" }
     ]

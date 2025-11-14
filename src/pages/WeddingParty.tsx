@@ -1,5 +1,6 @@
 import FadeSection from "../components/FadeSection"
 import img1 from '../assets/sally.png'
+import Footer from "../components/Footer"
 
 interface CardProps {
     name: string
@@ -10,25 +11,25 @@ interface CardProps {
 
 const parents = [
     {
-        name: "Sally",
+        name: "Sally McClune",
         role: "Mother of the bride",
         tagline: "Temu expert",
         img: img1
     },
     {
-        name: "Glen",
+        name: "Glenn McClune",
         role: "Father of the bride",
         tagline: "Beatles superfan",
         img: img1
     },
     {
-        name: "Anne",
+        name: "Anne Sproule",
         role: "Mother of the groom",
         tagline: "Resident travelagent",
         img: img1
     },
     {
-        name: "Glen",
+        name: "Paul Sproule",
         role: "Father of the groom",
         tagline: "Elvis superfan",
         img: img1
@@ -36,25 +37,25 @@ const parents = [
 ]
 const bridemaids = [
     {
-        name: "Hannah",
+        name: "Hannah Makinson",
         role: "Maid of Honor",
         tagline: "Organised fun haver",
         img: img1
     },
     {
-        name: "Sarah",
+        name: "Sarah McLaughlin",
         role: "Bridesmaid",
         tagline: "Cocktail co-ordinator",
         img: img1
     },
-        {
-        name: "Claire",
+    {
+        name: "Claire Fegan",
         role: "Bridesmaid",
         tagline: "Speech writer",
         img: img1
     },
     {
-        name: "Erin",
+        name: "Erin Sharma",
         role: "Bridesmaid",
         tagline: "Chief stylist",
         img: img1
@@ -62,19 +63,19 @@ const bridemaids = [
 ]
 const groomsmen = [
     {
-        name: "Stephen",
+        name: "Stephen Sproule",
         role: "Bestman",
         tagline: "Irish Dancer",
         img: img1
     },
     {
-        name: "Paul",
+        name: "Paul O'Gallocior",
         role: "Groomsman",
         tagline: "Music Critic",
         img: img1
     },
-      {
-        name: "Aaron",
+    {
+        name: "Aaron Sproule",
         role: "Groomsman",
         tagline: "Food Tester",
         img: img1
@@ -85,57 +86,40 @@ const groomsmen = [
 
 function Card({ props }: { props: CardProps }) {
     return (
-        <div className="flex space-x-4 bg-white w-10/12 max-w-xl p-2">
-            <img src={props.img} alt="" className="h-20 rounded-full outline-2 outline-primary" />
-            <span className="text-start text-primary">
-                <h1 className="text-2xl">{props.name}</h1>
-                <h2 className="font-raleway font-semibold">{props.role}</h2>
-                <p className="font-raleway italic">{props.tagline}</p>
+        <div className="flex space-x-4 bg-white w-10/12 h-22 max-w-xl">
+            <img src={props.img} alt="" className="aspect-square h-22" />
+            <span className="text-start my-auto text-primary py-2">
+                <h1 className="text-2xl/5 text-primary">{props.name}</h1>
+                <h2 className="font-minerva text-sm font-semibold">{props.role}</h2>
+                <p className="font-minerva italic text-sm">{props.tagline}</p>
             </span>
 
         </div>
     )
 }
 
+function GroupSection({ members }: { members: CardProps[] }) {
+    return (
+        <FadeSection className="justify-center space-y-2">
+            <div className="flex flex-col grow space-y-4 w-full justify-center items-center">
+                <h1 className="text-7xl/12 whitespace-break-spaces">Wedding <br /> Party</h1>
+                <p className='font-minerva text-xs'>These are some of our favourite people</p>
+                {members.map((person, index) => (
+                    <Card key={index} props={person} />
+                ))}
+            </div>
+            <Footer />
+        </FadeSection>
+    )
+}
+
 function WeddingParty() {
     return (
-        <>
-            <FadeSection id="Wedding-Party" className="justify-center space-y-5">
-                <h1 className="text-8xl/14 whitespace-break-spaces">Wedding Party</h1>
-                <p className='font-raleway text-xs'>These are some of our favourite people</p>
-                {parents.map((person) => (
-                    < Card props={person} />
-                ))}
-                <div>
-                    <p className="text-md leading-4 mt-4">Rachael & Joshua</p>
-                    <p className="text-md leading-4">09.08.26</p>
-                </div>
-            </FadeSection>
-            <FadeSection id="wedding-party" className="justify-center space-y-5">
-                <h1 className="text-8xl/14 whitespace-break-spaces">Wedding Party</h1>
-                <p className='font-raleway text-xs'>These are some of our favourite people</p>
-                {bridemaids.map((person) => (
-                    < Card props={person} />
-                ))}
-                <div>
-                    <p className="text-md leading-4 mt-4">Rachael & Joshua</p>
-                    <p className="text-md leading-4">09.08.26</p>
-                </div>
-
-            </FadeSection>
-            <FadeSection id="wedding-party" className="justify-center space-y-5">
-                <h1 className="text-8xl/14 whitespace-break-spaces">Wedding Party</h1>
-                <p className='font-raleway text-xs'>These are some of our favourite people</p>
-                {groomsmen.map((person) => (
-                    < Card props={person} />
-                ))}
-                <div>
-                    <p className="text-md leading-4 mt-4">Rachael & Joshua</p>
-                    <p className="text-md leading-4">09.08.26</p>
-                </div>
-
-            </FadeSection>
-        </>
+        <div id="Wedding-Party">
+            <GroupSection members={parents} />
+            <GroupSection members={bridemaids} />
+            <GroupSection members={groomsmen} />
+        </div>
     )
 }
 

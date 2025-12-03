@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import FadeSection from '../components/FadeSection';
-import Radio from '../components/Radio';
+import FadeSection from './FadeSection';
+import Radio from './Radio';
 import { BsPeopleFill, BsChevronUp, BsChevronDown } from "react-icons/bs";
-import Footer from '../components/Footer';
+import Footer from './Footer';
 
 
 function RSVP({ guestOne, guestTwo, plusOne, setPlusOne, family }: { guestOne: string | null; guestTwo: string | null, plusOne: string | null; setPlusOne: Function; family: string | null; }) {

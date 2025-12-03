@@ -1,6 +1,6 @@
-import FadeSection from "../components/FadeSection"
-import img1 from '../assets/sally.png'
-import Footer from "../components/Footer"
+import FadeSection from "./FadeSection"
+import img1 from '../../public/images/sally.png'
+import Footer from "./Footer"
 
 interface CardProps {
     name: string
@@ -87,8 +87,8 @@ const groomsmen = [
 function Card({ props }: { props: CardProps }) {
     return (
         <div className="flex space-x-4 bg-white w-10/12 h-22 max-w-xl">
-            <img src={props.img} alt="" className="aspect-square h-22" />
-            <span className="text-start my-auto text-primary py-2">
+        <img src={props.img.src} alt="" className="aspect-square h-22" />
+        <span className="text-start my-auto text-primary py-2">
                 <h1 className="text-2xl/5 text-primary">{props.name}</h1>
                 <h2 className="font-minerva text-sm font-semibold">{props.role}</h2>
                 <p className="font-minerva italic text-sm">{props.tagline}</p>

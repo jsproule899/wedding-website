@@ -1,4 +1,4 @@
-import FadeSection from "../components/FadeSection";
+import FadeSection from "./FadeSection";
 
 
 function Home({ guestOne, guestTwo, plusOne, family }: { guestOne: string | null; guestTwo: string | null, plusOne: string | null; family: string | null; }) {

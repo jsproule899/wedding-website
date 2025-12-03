@@ -1,6 +1,6 @@
-import FadeSection from '../components/FadeSection'
+import FadeSection from './FadeSection'
 import { TbWorldWww, TbPhoneCall } from "react-icons/tb";
-import Footer from '../components/Footer';
+import Footer from './Footer';
 
 interface HotelProps {
     name: string

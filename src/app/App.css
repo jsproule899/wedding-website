@@ -5,21 +5,21 @@
   font-family: "chloe";
   font-style: normal;
   font-weight: 400;
-  src: url("./assets/fonts/Chloe-Regular.otf") format("opentype");
+  src: url("../../public/fonts/Chloe-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "bacalisties";
   font-style: normal;
   font-weight: 400;
-  src: url("./assets/fonts/Bacalisties.ttf") format("TrueType");
+  src: url("../../public/fonts/Bacalisties.ttf") format("TrueType");
 }
 
 @font-face {
   font-family: "minerva-modern";
   font-style: normal;
   font-weight: 400;
-  src: url("./assets/fonts/fonnts.com-MinervaModern_Regular.otf") format("opentype");
+  src: url("../../public/fonts/fonnts.com-MinervaModern_Regular.otf") format("opentype");
 }
 
 
@@ -119,6 +119,11 @@
 
     }
   }
+}
+
+:root {
+  color: white;
+  background-color: #b7503d;
 }
 
 #root {

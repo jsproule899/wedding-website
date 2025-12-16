@@ -8,9 +8,10 @@ export interface RadioProps {
   name?: string;
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   value?: string;
+  required?: boolean;
 }
 
-const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value }: RadioProps) => (
+const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, required }: RadioProps) => (
   <div className="flex gap-2 items-start">
     <div className="grid place-items-center mt-1">
       <input
@@ -29,6 +30,7 @@ const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value }: R
         "
         onChange={onChange}
         value={value}
+        required={required}
       />
       <div
         className={cx(

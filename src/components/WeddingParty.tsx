@@ -1,5 +1,5 @@
+import Image from "next/image"
 import FadeSection from "./FadeSection"
-import img1 from '../../public/images/sally.png'
 import Footer from "./Footer"
 
 interface CardProps {
@@ -14,25 +14,25 @@ const parents = [
         name: "Sally McClune",
         role: "Mother of the bride",
         tagline: "Temu expert",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Glenn McClune",
         role: "Father of the bride",
         tagline: "Beatles superfan",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Anne Sproule",
         role: "Mother of the groom",
         tagline: "Resident travelagent",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Paul Sproule",
         role: "Father of the groom",
         tagline: "Elvis superfan",
-        img: img1
+        img: "/images/sally.png"
     }
 ]
 const bridemaids = [
@@ -40,25 +40,25 @@ const bridemaids = [
         name: "Hannah Makinson",
         role: "Maid of Honor",
         tagline: "Organised fun haver",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Sarah McLaughlin",
         role: "Bridesmaid",
         tagline: "Cocktail co-ordinator",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Claire Fegan",
         role: "Bridesmaid",
         tagline: "Speech writer",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Erin Sharma",
         role: "Bridesmaid",
         tagline: "Chief stylist",
-        img: img1
+        img: "/images/sally.png"
     }
 ]
 const groomsmen = [
@@ -66,19 +66,19 @@ const groomsmen = [
         name: "Stephen Sproule",
         role: "Bestman",
         tagline: "Irish Dancer",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Paul O'Gallocior",
         role: "Groomsman",
         tagline: "Music Critic",
-        img: img1
+        img: "/images/sally.png"
     },
     {
         name: "Aaron Sproule",
         role: "Groomsman",
         tagline: "Food Tester",
-        img: img1
+        img: "/images/sally.png"
     }
 ]
 
@@ -87,8 +87,8 @@ const groomsmen = [
 function Card({ props }: { props: CardProps }) {
     return (
         <div className="flex space-x-4 bg-white w-10/12 h-22 max-w-xl">
-        <img src={props.img.src} alt="" className="aspect-square h-22" />
-        <span className="text-start my-auto text-primary py-2">
+            <Image src={props.img} loading="lazy" alt="Picture of wedding party member" width={230} height={230} className="aspect-square h-22 w-22"/>
+            <span className="text-start my-auto text-primary py-2">
                 <h1 className="text-2xl/5 text-primary">{props.name}</h1>
                 <h2 className="font-minerva text-sm font-semibold">{props.role}</h2>
                 <p className="font-minerva italic text-sm">{props.tagline}</p>

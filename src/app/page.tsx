@@ -16,7 +16,7 @@ import { useSearchParams } from "next/navigation";
 export default function Page() {
     const [daysLeft, setDaysLeft] = useState(0);
     const [daysTogether, setDaysTogether] = useState(0);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const searchParams = useSearchParams();
     const [plusOne, setPlusOne] = useState<string | null>(searchParams?.get("plusOne") ?? null);
     const guestOne = searchParams?.get("guestOne") ?? null;
     const guestTwo = searchParams?.get("guestTwo") ?? null;

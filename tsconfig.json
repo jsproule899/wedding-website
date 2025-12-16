@@ -41,7 +41,7 @@
     "./next-env.d.ts",
     "dist/types/**/*.ts",
     "dist/dev/types/**/*.ts"
-  ],
+, "src/proxy.ts"  ],
   "exclude": [
     "./node_modules"
   ]

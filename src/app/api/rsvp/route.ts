@@ -11,6 +11,8 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Supabase insert error:", error);
+      if (error.message) return NextResponse.json({ ok: false, error: error.message }, { status: 400 })
+
       return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
     }
   };
@@ -21,9 +23,9 @@ export async function POST(request: Request) {
 
 async function rsvp(guest: any) {
 
-  const {name, attendance, menuChoice, songRequest} = guest
+  const { name, attendance, menuChoice, songRequest } = guest
 
-  if (!name || !attendance || !menuChoice) return { error: new Error("Required field missing") };
+  if (!name || !attendance || (attendance === "accept" && !menuChoice)) return { error: new Error("Required field missing") };
 
   const { data, error } = await supabaseServer.from("rsvps").select("id").eq("guest_name", guest.name);
 

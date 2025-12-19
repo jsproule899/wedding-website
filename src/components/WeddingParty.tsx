@@ -66,19 +66,19 @@ const groomsmen = [
         name: "Stephen Sproule",
         role: "Bestman",
         tagline: "Irish Dancer",
-        img: "/images/sally.png"
+        img: "/images/stephen.jpg"
     },
     {
-        name: "Paul O'Gallocior",
+        name: "Paul Ó Gallachóir",
         role: "Groomsman",
         tagline: "Music Critic",
-        img: "/images/sally.png"
+        img: "/images/paul.jpg"
     },
     {
         name: "Aaron Sproule",
         role: "Groomsman",
         tagline: "Food Tester",
-        img: "/images/sally.png"
+        img: "/images/aaron.png"
     }
 ]
 

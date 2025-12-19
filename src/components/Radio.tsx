@@ -9,10 +9,13 @@ export interface RadioProps {
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   value?: string;
   required?: boolean;
+  hidden?: boolean;
+  checked?: boolean
+  readOnly?: boolean
 }
 
-const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, required }: RadioProps) => (
-  <div className="flex gap-2 items-start">
+const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, required, hidden, checked, readOnly }: RadioProps) => (
+  <div className={`flex gap-2 items-start ${hidden ? "hidden" : ""}`} >
     <div className="grid place-items-center mt-1">
       <input
         type="radio"
@@ -26,18 +29,19 @@ const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, req
           appearance-none shrink-0
           w-4 h-4 border-2 border-primary rounded-full
           focus:outline-none focus:ring-offset-0 focus:ring-2 focus:ring-primary/50
-          disabled:border-gray-400
-        "
+          disabled:border-primary/10"
         onChange={onChange}
+        checked={checked}
         value={value}
         required={required}
+        readOnly={readOnly}
       />
       <div
         className={cx(
           "pointer-events-none",
           "col-start-1 row-start-1",
           "w-2 h-2 rounded-full peer-checked:bg-primary",
-          "peer-checked:peer-disabled:bg-gray-400"
+          "peer-checked:peer-disabled:bg-primary/20"
         )}
       />
     </div>
@@ -45,7 +49,7 @@ const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, req
       className={cx(
         "text-start hover:cursor-pointer text-primary",
         {
-          "text-gray-400": disabled,
+          "text-primary/20": disabled,
         })}
     >
       {label}

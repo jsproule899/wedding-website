@@ -133,6 +133,13 @@
   text-align: center;
 }
 
+body{
+  height: 100dvh;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 
 
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import FadeSection from './FadeSection';
 import Radio from './Radio';
-import { BsFillPersonDashFill, BsFillPersonPlusFill, BsChevronUp, BsChevronDown } from "react-icons/bs";
+import { BsFillPersonDashFill, BsFillPersonPlusFill, BsChevronUp } from "react-icons/bs";
 import Footer from './Footer';
 import TextInput from './TextInput';
 
 
-function RSVP({ guestOne, guestTwo, plusOne, setPlusOne, family }: { guestOne: string | null; guestTwo: string | null, plusOne: string | null; setPlusOne: Function; family: string | null; }) {
+function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | null; guestTwo: string | null, plusOne: string | null; setPlusOne: Function; }) {
     const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
     const [error, setError] = useState("");
     const [guestOneAttending, setGuestOneAttending] = useState(true);

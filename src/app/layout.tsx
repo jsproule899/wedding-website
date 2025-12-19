@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import "./globals.css";
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Rachael & Josh Wedding',
@@ -14,7 +15,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <div id="root">{children}</div>
+                <div id="root">
+                    <Suspense fallback={<div>loading</div>}>
+                        {children}
+                    </Suspense>
+                </div>
             </body>
         </html>
     )

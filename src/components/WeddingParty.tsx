@@ -14,25 +14,25 @@ const parents = [
         name: "Sally McClune",
         role: "Mother of the bride",
         tagline: "Temu expert",
-        img: "/images/sally.png"
+        img: "/images/sally.jpg"
     },
     {
         name: "Glenn McClune",
         role: "Father of the bride",
         tagline: "Beatles superfan",
-        img: "/images/sally.png"
+        img: "/images/glenn.png"
     },
     {
         name: "Anne Sproule",
         role: "Mother of the groom",
         tagline: "Resident travelagent",
-        img: "/images/sally.png"
+        img: "/images/anne_s.jpg"
     },
     {
         name: "Paul Sproule",
         role: "Father of the groom",
-        tagline: "Elvis superfan",
-        img: "/images/sally.png"
+        tagline: "Backup photographer",
+        img: "/images/paul_s.jpg"
     }
 ]
 const bridemaids = [
@@ -40,25 +40,25 @@ const bridemaids = [
         name: "Hannah Makinson",
         role: "Maid of Honor",
         tagline: "Organised fun haver",
-        img: "/images/sally.png"
+        img: "/images/hannah.jpg"
     },
     {
         name: "Sarah McLaughlin",
         role: "Bridesmaid",
         tagline: "Cocktail co-ordinator",
-        img: "/images/sally.png"
+        img: "/images/sarah.png"
     },
     {
         name: "Claire Fegan",
         role: "Bridesmaid",
         tagline: "Speech writer",
-        img: "/images/sally.png"
+        img: "/images/claire.jpg"
     },
     {
         name: "Erin Sharma",
         role: "Bridesmaid",
         tagline: "Chief stylist",
-        img: "/images/sally.png"
+        img: "/images/erin.jpg"
     }
 ]
 const groomsmen = [
@@ -87,7 +87,7 @@ const groomsmen = [
 function Card({ props }: { props: CardProps }) {
     return (
         <div className="flex space-x-4 bg-white w-10/12 h-22 max-w-xl">
-            <Image src={props.img} loading="lazy" alt="Picture of wedding party member" width={230} height={230} className="aspect-square h-22 w-22"/>
+            <Image src={props.img} loading="lazy" alt="Picture of wedding party member" width={1080} height={1080} className="aspect-square h-22 w-22"/>
             <span className="text-start my-auto text-primary py-2">
                 <h1 className="text-2xl/5 text-primary">{props.name}</h1>
                 <h2 className="font-minerva text-sm font-semibold">{props.role}</h2>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import NavBar from "@/components/navigation/NavBar";
-import BackgroundImage from "@/components/BackgroundImage";
+import BackgroundImage from "@/components/ui/BackgroundImage";
 import Home from "@/components/Home";
 import WeddingParty from "@/components/WeddingParty";
 import GettingThere from "@/components/GettingThere";

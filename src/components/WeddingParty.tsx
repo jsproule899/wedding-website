@@ -1,6 +1,6 @@
 import Image from "next/image"
-import FadeSection from "./FadeSection"
-import Footer from "./Footer"
+import FadeSection from "./ui/FadeSection"
+import Footer from "./ui/Footer"
 
 interface CardProps {
     name: string

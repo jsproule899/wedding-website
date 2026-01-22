@@ -1,4 +1,4 @@
-import useInView from "../hooks/useInView";
+import useInView from "../../hooks/useInView";
 
 export default function FadeSection({ id, className, children }: { id?: string; className?: string, children: React.ReactNode }) {
   const { ref, inView } = useInView(0.2);

@@ -1,5 +1,5 @@
-import FadeSection from "./FadeSection"
-import Footer from "./Footer";
+import FadeSection from "./ui/FadeSection"
+import Footer from "./ui/Footer";
 
 interface MealProps {
     name: string;

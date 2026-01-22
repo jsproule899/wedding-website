@@ -1,6 +1,6 @@
-import FadeSection from './FadeSection'
+import FadeSection from './ui/FadeSection'
 import { TbWorldWww, TbPhoneCall } from "react-icons/tb";
-import Footer from './Footer';
+import Footer from './ui/Footer';
 
 interface HotelProps {
     name: string
@@ -33,7 +33,7 @@ function Card({ props }: { props: HotelProps }) {
             <h2 className="text-2xl/2 font-chloe">{props.name}</h2>
             <p className='text-xs font-bold w-9/12'>{props.address}</p>
             <p className='text-xs'>{props.info}</p>
-            <span className='flex space-x-1 items-center'><TbWorldWww /><a className='text-sm font-bold' href={`https://www.${props.website}`}>{props.website}</a></span>
+            <span className='flex space-x-1 items-center'><TbWorldWww /><a className='text-sm font-bold' href={`https://www.${props.website}`} target="_blank">{props.website}</a></span>
             <span className='flex space-x-1'><TbPhoneCall /><a className='text-sm font-bold' href={`tel: ${props.phone}`}>{props.phone}</a></span>
         </div>
     )

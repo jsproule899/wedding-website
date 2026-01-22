@@ -1,4 +1,4 @@
-import Radio from "./Radio";
+import Radio from "../ui/Radio";
 
 type OptionType = {
   value: string;

@@ -123,7 +123,7 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                                         <Radio name="guestTwoMenu" id="beef-guest-two" value="Beef" label='Beef' required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} />
                                         <Radio name="guestTwoMenu" id="chicken-guest-two" value="chicken" label='chicken' disabled={!guestTwoAttending} />
                                         <Radio name="guestTwoMenu" id="vegetarian-guest-two" value="vegetarian" label='vegetarian' disabled={!guestTwoAttending} />
-                                        <Radio name="guestOneMenu" id="not-applicable" value='N/A' label='N/A' hidden checked={!guestTwoAttending} readOnly />
+                                        <Radio name="guestTwoMenu" id="not-applicable" value='N/A' label='N/A' hidden checked={!guestTwoAttending} readOnly />
                                     </div>
                                 </div>
                             </div>

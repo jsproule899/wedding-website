@@ -22,10 +22,10 @@ function Timeline() {
             <div className="flex flex-col grow space-y-4 w-full justify-center items-center">
                 <h1 className="text-7xl/12 mb-10 ">On the<br />Day</h1>
                 <div className="grid grid-cols-5 gap-x-1 gap-y-8 justify-items-center items-center text-xl font-minerva mx-10">
-                    <TimelinePoint time="2.00pm" event="Ceramony" />
-                    <TimelinePoint time="3.00pm" event="Drinks Reception" />
-                    <TimelinePoint time="5.00pm" event="Speeches" />
-                    <TimelinePoint time="5.30pm" event="Dinner" />
+                    <TimelinePoint time="1.30pm" event="Ceramony" />
+                    <TimelinePoint time="2.15pm" event="Drinks Reception" />
+                    <TimelinePoint time="4.30pm" event="Speeches" />
+                    <TimelinePoint time="5.00pm" event="Dinner" />
                     <TimelinePoint time="7.00pm" event="First Dance" />
                     <TimelinePoint time="10.30pm" event="DJ & Dancing" />
                     <TimelinePoint time="1.00 am" event="BedTime" end />

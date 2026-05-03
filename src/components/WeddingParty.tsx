@@ -71,13 +71,13 @@ const groomsmen = [
     {
         name: "Paul Ó Gallachóir",
         role: "Groomsman",
-        tagline: "Music Critic",
+        tagline: "Dog Whisperer",
         img: "/images/paul.jpg"
     },
     {
         name: "Aaron Sproule",
         role: "Groomsman",
-        tagline: "Food Tester",
+        tagline: "Muay Thai Champion",
         img: "/images/aaron.png"
     }
 ]

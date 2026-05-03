@@ -5,19 +5,21 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
   const notAttending = rsvps.filter(r => r.attendance === "decline").length;
 
   function exportCSV() {
-    const headers = ["Guest Name", "Attendance", "Menu Choice", "Song Request", "Submitted At"];
+    const headers = ["Guest Name", "Attendance", "Main Choice", "Dessert Choice", "Dietary Restrictions", "Song Request", "Submitted At"];
 
     const rows = rsvps.map(r => [
       r.guest_name,
       r.attendance,
-      r.menu_choice || "",
+      r.main_choice || "",
+      r.dessert_choice || "",
+      r.dietary_restrictions || "",
       r.song_request || "",
-      r.created_at,
+      new Date(r.created_at).toLocaleDateString(),
     ]);
 
     const csvContent =
       "data:text/csv;charset=utf-8," +
-      [headers, ...rows].map(e => e.join(",")).join("\n");
+      [headers, ...rows].map(e => e.join(";")).join("\n");
 
     const url = encodeURI(csvContent);
     const link = document.createElement("a");
@@ -27,7 +29,7 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
   }
 
   return (
-    <div>
+    <div className="w-10/12 m-auto">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
       {/* Stats */}
@@ -51,14 +53,16 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
       </button>
 
       {/* Table */}
-      <table className="min-w-full border border-white">
+      <table className=" m-auto border border-white">
         <thead className="bg-white border text-primary ">
           <tr>
             <th className="border border-white p-2">Guest Name</th>
             <th className="border border-white p-2">Attendance</th>
-            <th className="border border-white p-2">Menu</th>
-            <th className="border border-white p-2">Song</th>
-            <th className="border border-white p-2">Submitted</th>
+            <th className="border border-white p-2">Main Choice</th>
+            <th className="border border-white p-2">Dessert Choice</th>
+            <th className="border border-white p-2">Dietary Restrictions</th>
+            <th className="border border-white p-2">Song Request</th>
+            <th className="border border-white p-2">Submitted At</th>
           </tr>
         </thead>
 
@@ -67,7 +71,9 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
             <tr key={r.id} className="font-minerva text-white">
               <td className="border p-2">{r.guest_name}</td>
               <td className="border p-2">{r.attendance}</td>
-              <td className="border p-2">{r.menu_choice}</td>
+              <td className="border p-2">{r.main_choice}</td>
+              <td className="border p-2">{r.dessert_choice}</td>
+              <td className="border p-2">{r.dietary_restrictions}</td>
               <td className="border p-2">{r.song_request}</td>
               <td className="border p-2">{new Date(r.created_at).toLocaleDateString()}</td>
             </tr>

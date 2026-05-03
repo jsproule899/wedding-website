@@ -23,9 +23,9 @@ export async function POST(request: Request) {
 
 async function rsvp(guest: any) {
 
-  const { name, attendance, menuChoice, songRequest } = guest
+  const { name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest } = guest
 
-  if (!name || !attendance || (attendance === "accept" && !menuChoice)) return { error: new Error("Required field missing") };
+  if (!name || !attendance || (attendance === "accept" && (!mainChoice || !dessertChoice))) return { error: new Error("Required field missing") };
 
   const { data, error } = await supabaseServer.from("rsvps").select("id").eq("guest_name", guest.name);
 
@@ -39,7 +39,9 @@ async function rsvp(guest: any) {
       .update({
         guest_name: name,
         attendance: attendance,
-        menu_choice: menuChoice,
+        main_choice: mainChoice,
+        dessert_choice: dessertChoice,
+        dietary_restrictions: dietryReqs,
         song_request: songRequest
       })
       .eq("id", existingId)
@@ -50,7 +52,9 @@ async function rsvp(guest: any) {
     .insert({
       guest_name: name,
       attendance: attendance,
-      menu_choice: menuChoice,
+      main_choice: mainChoice,
+      dessert_choice: dessertChoice,
+      dietary_restrictions: dietryReqs,
       song_request: songRequest,
     });
 

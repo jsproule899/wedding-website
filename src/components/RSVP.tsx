@@ -37,9 +37,10 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
             dessertChoice: e.target.guestOneDessert.value,
             dietryReqs: e.target.guestOneDietry.value,
             songRequest: e.target.guestOneSong.value,
+            plusOne: null,
         }]
 
-        if (guests === 2)
+        if (guests === 2) {
             guestArray.push({
                 name: e.target.guestTwoName.value.toLowerCase().trim(),
                 attendance: e.target.guestTwoAttendance.value,
@@ -47,8 +48,10 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                 dessertChoice: e.target.guestTwoDessert.value,
                 dietryReqs: e.target.guestTwoDietry.value,
                 songRequest: e.target.guestTwoSong.value,
+                plusOne: e.target.guestOneName.value.toLowerCase().trim(),
             })
-
+            guestArray[0].plusOne = e.target.guestTwoName.value.toLowerCase().trim();
+        }
         const formData = {
             guests: guestArray
         };

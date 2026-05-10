@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS public.rsvps
     dessert_choice text COLLATE pg_catalog."default",
     dietary_restrictions text COLLATE pg_catalog."default",
     song_request text COLLATE pg_catalog."default",
+    plus_one text COLLATE pg_catalog."default",
     CONSTRAINT rsvps_pkey PRIMARY KEY (id)
 )
 

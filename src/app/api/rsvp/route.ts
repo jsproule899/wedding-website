@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { MdPlusOne } from "react-icons/md";
 
 export async function POST(request: Request) {
   const data = await request.json();
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
 
 async function rsvp(guest: any) {
 
-  const { name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest } = guest
+  const { name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest, plusOne } = guest
 
   if (!name || !attendance || (attendance === "accept" && (!mainChoice || !dessertChoice))) return { error: new Error("Required field missing") };
 
@@ -41,8 +42,8 @@ async function rsvp(guest: any) {
     }
   }
   try {
-    const { rows } = await db.query(`INSERT INTO rsvps (guest_name, attendance, main_choice, dessert_choice, dietary_restrictions, song_request) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-      [name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest]);
+    const { rows } = await db.query(`INSERT INTO rsvps (guest_name, attendance, main_choice, dessert_choice, dietary_restrictions, song_request, plus_one) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+      [name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest, plusOne]);
     return { rows };
   } catch (error: any) {
     console.error("Database insert error:", error);

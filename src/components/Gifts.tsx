@@ -7,7 +7,8 @@ function Gifts() {
             <div className="flex flex-col grow space-y-2 w-full justify-center items-center">
                 <h1 className="text-7xl whitespace-break-spaces">Gifts</h1>
                 <div className="bg-white text-primary py-10 px-10 w-10/12 max-w-xl space-y-10 font-minerva">
-                    <p className='text-xl'>Your presence on our special day is more than enough, but if you want to give us a gift we'd very much appreciate some money to spend on our honey....moon</p>
+                    <p className='text-md'>
+                        As we've already built a home together, we kindly ask that in place of traditional gifts, you consider contributing towards our future adventures and married life together. Please don't feel any pressure, your love, laughter, and company on the day means more than we can say, but if you'd like to help us celebrate, a little cash would go towards our getaway!</p>
                 </div>
             </div>
             <Footer />

@@ -78,7 +78,7 @@ const groomsmen = [
         name: "Aaron Sproule",
         role: "Groomsman",
         tagline: "Muay Thai Champion",
-        img: "/images/aaron.png"
+        img: "/images/aaron.jpg"
     }
 ]
 

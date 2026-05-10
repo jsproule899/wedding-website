@@ -61,8 +61,12 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
 
         if (!res.ok) {
             setStatus("error");
-            if (res.status === 400)
+            if (res.status === 422) {
                 setError("Required field missing")
+            } else {
+                const data = await res.json();
+                setError(data.error || "Something went wrong. Please try again!");
+            }
             return;
         }
 
@@ -144,13 +148,13 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                             <div className="bg-white flex flex-col justify-center items-center p-4 w-10/12 max-w-xl">
                                 <div className='space-y-2.5 items-center text-center align-middle w-10/12'>
                                     <TextInput id="guestTwoName" autoComplete='name' placeholder='Full Name' defaultValue={guestTwo?.toLocaleUpperCase() ?? ""} required={guests === 2} />
-                                    <Select name="guestTwoMain" id="guestTwoMain"  required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Main'>
+                                    <Select name="guestTwoMain" id="guestTwoMain" required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Main'>
                                         <option value={menuOptions.mains[0]}>{menuOptions.mains[0]}</option>
                                         <option value={menuOptions.mains[1]}>{menuOptions.mains[1]}</option>
                                         <option value={menuOptions.mains[2]}>{menuOptions.mains[2]}</option>
                                         <option value={menuOptions.mains[3]}>{menuOptions.mains[3]}</option>
                                     </Select>
-                                    <Select name="guestTwoDessert" id="guestTwoDessert"  required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Dessert'>
+                                    <Select name="guestTwoDessert" id="guestTwoDessert" required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Dessert'>
                                         <option value={menuOptions.desserts[0]}>{menuOptions.desserts[0]}</option>
                                         <option value={menuOptions.desserts[1]}>{menuOptions.desserts[1]}</option>
                                         <option value={menuOptions.desserts[2]}>{menuOptions.desserts[2]}</option>

@@ -1,23 +1,22 @@
 import { NextResponse } from "next/server";
-import { supabaseServer } from "@/lib/supabase";
+import { db } from "@/lib/db";
 
 export async function POST(request: Request) {
   const data = await request.json();
 
   const { guests } = data;
   for (const guest of guests) {
-    const { error } = await rsvp(guest);
-
+    const { rows, error } = await rsvp(guest);
 
     if (error) {
-      console.error("Supabase insert error:", error);
-      if (error.message) return NextResponse.json({ ok: false, error: error.message }, { status: 400 })
-
+      if (error.message === "Required field missing") return NextResponse.json({ ok: false, error: error.message }, { status: 422 })
       return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
     }
+
+    console.log("RSVP processed for guest:", guest.name, "DB response:", rows)
   };
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, });
 }
 
 
@@ -27,36 +26,26 @@ async function rsvp(guest: any) {
 
   if (!name || !attendance || (attendance === "accept" && (!mainChoice || !dessertChoice))) return { error: new Error("Required field missing") };
 
-  const { data, error } = await supabaseServer.from("rsvps").select("id").eq("guest_name", guest.name);
+  const { rows } = await db.query(`SELECT id FROM rsvps WHERE guest_name = $1`, [guest.name]);
 
-  if (error) return { error };
-
-  const existingId = data?.[0]?.id;
+  const existingId = rows[0]?.id;
 
   if (existingId) {
-    return supabaseServer
-      .from("rsvps")
-      .update({
-        guest_name: name,
-        attendance: attendance,
-        main_choice: mainChoice,
-        dessert_choice: dessertChoice,
-        dietary_restrictions: dietryReqs,
-        song_request: songRequest
-      })
-      .eq("id", existingId)
+    try {
+      const { rows } = await db.query(`UPDATE rsvps SET guest_name = $1, attendance = $2, main_choice = $3, dessert_choice = $4, dietary_restrictions = $5, song_request = $6 WHERE id = $7`,
+        [name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest, existingId]);
+      return { rows };
+    } catch (error: any) {
+      console.error("Database update error:", error);
+      return { error: new Error("Database update error: " + error.message) };
+    }
   }
-
-  return supabaseServer
-    .from("rsvps")
-    .insert({
-      guest_name: name,
-      attendance: attendance,
-      main_choice: mainChoice,
-      dessert_choice: dessertChoice,
-      dietary_restrictions: dietryReqs,
-      song_request: songRequest,
-    });
-
-
+  try {
+    const { rows } = await db.query(`INSERT INTO rsvps (guest_name, attendance, main_choice, dessert_choice, dietary_restrictions, song_request) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+      [name, attendance, mainChoice, dessertChoice, dietryReqs, songRequest]);
+    return { rows };
+  } catch (error: any) {
+    console.error("Database insert error:", error);
+    return { error: new Error("Database insert error: " + error.message) };
+  }
 }

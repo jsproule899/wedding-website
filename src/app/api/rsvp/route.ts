@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { MdPlusOne } from "react-icons/md";
 
 export async function POST(request: Request) {
   const data = await request.json();

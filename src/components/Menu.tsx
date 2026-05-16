@@ -29,9 +29,9 @@ export const courses = [
 function Meal({ course }: { course: MealProps }) {
     return (
         <div>
-            <h2 className="text-2xl font-chloe">{course.name}</h2>
+            <h2 className=" text-lg xs:text-2xl font-chloe">{course.name}</h2>
             {course.options.map((opt, index) => (
-                <p className="text-sm" key={index}>{opt}</p>
+                <p className="text-xs xs:text-sm" key={index}>{opt}</p>
             ))}
         </div>
     )
@@ -39,10 +39,10 @@ function Meal({ course }: { course: MealProps }) {
 
 function Menu() {
     return (
-        <FadeSection id="Menu" className="justify-center space-y-5">
-            <div className="flex flex-col grow space-y-2 w-full justify-center items-center">
-                <h1 className="text-7xl">Menu</h1>
-                <div className="bg-white text-primary py-6 w-10/12 max-w-xl space-y-3 font-minerva">
+        <FadeSection id="Menu" className="justify-center space-y-1 xs:space-y-5">
+            <div className="flex flex-col grow xs:space-y-2 w-full justify-center items-center">
+                <h1 className="text-5xl xs:text-7xl">Menu</h1>
+                <div className="bg-white text-primary py-2 xs:py-6 w-10/12 max-w-xl space-y-3 font-minerva">
                     {courses.map((course, index) => (
                         <Meal key={index} course={course} />
                     ))}

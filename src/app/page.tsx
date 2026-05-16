@@ -21,18 +21,20 @@ export default function Page() {
     const family = searchParams?.get("family") ?? null;
 
     return (
-        <BackgroundImage>
-            <div id="container" className="flex flex-col">
-                <NavBar />
-                <Home guestOne={guestOne} guestTwo={guestTwo} family={family} plusOne={plusOne} />
-                <WeddingParty />
-                <GettingThere />
-                <Accomodation />
-                <Menu />
-                <Timeline />
-                <RSVP guestOne={guestOne} guestTwo={guestTwo} plusOne={plusOne} setPlusOne={setPlusOne} />
-                <Gifts />
-            </div>
-        </BackgroundImage>
+        <div className='relative overflow-y-scroll h-screen min-w-dvw snap-y snap-mandatory scroll-auto'>
+            <BackgroundImage>
+                <div id="container" className="flex flex-col mb-10">
+                    <NavBar />
+                    <Home guestOne={guestOne} guestTwo={guestTwo} family={family} plusOne={plusOne} />
+                    <WeddingParty />
+                    <GettingThere />
+                    <Accomodation />
+                    <Menu />
+                    <Timeline />
+                    <RSVP guestOne={guestOne} guestTwo={guestTwo} plusOne={plusOne} setPlusOne={setPlusOne} />
+                    <Gifts />
+                </div>
+            </BackgroundImage>
+        </div>
     );
 }

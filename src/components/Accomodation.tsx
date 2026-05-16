@@ -32,12 +32,12 @@ const hotels = [
 
 function Card({ props }: { props: HotelProps }) {
     return (
-        <div className="bg-white text-primary py-4 w-10/12 max-w-xl font-minerva text-left px-4 space-y-2">
-            <h2 className="text-2xl/2 font-chloe">{props.name}</h2>
-            <p className='text-xs font-bold w-9/12'>{props.address}</p>
-            <p className='text-xs'>{props.info}</p>
-            <span className='flex space-x-1 items-center'><TbWorldWww /><a className='text-sm font-bold' href={`https://www.${props.websiteLink}`} target="_blank">{props.websiteText}</a></span>
-            <span className='flex space-x-1'><TbPhoneCall /><a className='text-sm font-bold' href={`tel: ${props.phone}`}>{props.phone}</a></span>
+        <div className="bg-white text-primary py-2 xs:py-4 w-10/12 max-w-xl font-minerva text-left px-4 space-y-1 xs:space-y-2">
+            <h2 className="text-xl/4 xs:text-2xl/2 font-chloe">{props.name}</h2>
+            <p className='text-xs font-bold'>{props.address}</p>
+            <p className='text-[0.625rem] xs:text-xs'>{props.info}</p>
+            <span className='flex space-x-1 items-center'><TbWorldWww /><a className='text-xs xs:text-sm font-bold' href={`https://www.${props.websiteLink}`} target="_blank">{props.websiteText}</a></span>
+            <span className='flex space-x-1'><TbPhoneCall /><a className='text-xs xs:text-sm font-bold' href={`tel: ${props.phone}`}>{props.phone}</a></span>
         </div>
     )
 }
@@ -45,11 +45,9 @@ function Card({ props }: { props: HotelProps }) {
 function Accomodation() {
 
     return (
-        <FadeSection id="Accomodation" className="justify-center space-y-5">
-          <div className="flex flex-col grow space-y-2 w-full justify-center items-center">
-                <h1 className="text-7xl/10 whitespace-break-spaces">Where<br /> to stay</h1>
-                <p className='font-minerva text-xs'>If you would like to stay there are a few options.</p>
-
+        <FadeSection id="Accomodation" className="justify-center xs:space-y-5">
+            <div className="flex flex-col grow space-y-2 w-full justify-center items-center">
+                <h1 className="text-5xl/8 xs:text-7xl/10 whitespace-break-spaces mb-3 xs:mb-6">Where<br /> to stay</h1>
                 {hotels.map((hotel, index) => (
                     < Card key={index} props={hotel} />
                 ))}

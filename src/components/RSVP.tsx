@@ -97,28 +97,28 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
 
     return (
         <FadeSection id="RSVP" className='justify-center items-center'>
-            <div className={`fixed top-0 left-0 right-0 w-full h-10vh text-lg bg-white text-primary z-50 p-2 transition-all ease-in-out duration-600 ${showPlusOneMessage ? "translate-y-0 opacity-90" : "-translate-y-full opacity-0"}`}>
+            <div className={`fixed top-0 left-0 right-0 w-full h-10vh xs:text-lg bg-white text-primary z-50 p-2 transition-all ease-in-out duration-600 ${showPlusOneMessage ? "translate-y-0 opacity-90" : "-translate-y-full opacity-0"}`}>
                 <p >You've got a Plus One, if you don't wish to bring a guest, click the <BsFillPersonDashFill className='inline text-center align-text-top text-base' /> icon to remove them.</p>
             </div>
 
             <div className='mt-auto'>
-                <h1 className='text-7xl/10 mt-10'> RSVP </h1>
-                <p className='font-minerva text-xl'> by 9th July 2025</p>
+                <h1 className='text-5xl/8 xs:text-7xl/10 xs:mt-10'> RSVP </h1>
+                <p className='font-minerva xs:text-xl'> by 9th July 2025</p>
             </div>
             <form onSubmit={handleSubmit} onInvalid={handleInvalid} className={`${status == "done" && "hidden"}`}>
 
                 <div className="flex flex-col w-full justify-center items-center">
-                    <div className='bg-white flex flex-col justify-center items-center mt-8 p-1 w-10/12 max-w-xl cursor-pointer' onClick={() => setGuestShown(guestShown % guests + 1)}> <span className='flex '><h2 className='text-primary text-2xl flex '>{guestOne ? guestOne : "Guest One"}</h2><BsChevronUp className={`text-primary mx-2 my-auto text-lg transition duration-300 ${guestShown === 1 && "-rotate-180"}`} /> </span></div>
-                    <div className={` flex flex-col items-center transition-[height] ease-in-out duration-300 overflow-hidden ${guestShown === 1 ? "h-70" : "h-0"}`}>
+                    <div className='bg-white flex flex-col justify-center items-center mt-4 xs:mt-8 p-1 w-10/12 max-w-xl cursor-pointer' onClick={() => setGuestShown(guestShown % guests + 1)}> <span className='flex '><h2 className='text-primary text-xl xs:text-2xl flex '>{guestOne ? guestOne : "Guest One"}</h2><BsChevronUp className={`text-primary mx-2 my-auto text-lg transition duration-300 ${guestShown === 1 && "-rotate-180"}`} /> </span></div>
+                    <div className={` flex flex-col items-center transition-[height] ease-in-out duration-300 overflow-hidden ${guestShown === 1 ? "h-52 xs:h-72" : "h-px"}`}>
                         <div className="bg-white flex flex-col justify-center items-center w-10/12 max-w-xl">
-                            <h2 className='text-primary text-3xl mb-1'>Can you join us?</h2>
-                            <div className='flex space-x-2 items-center text-center align-middle font-minerva select-none'>
+                            <h2 className='text-primary text-xl xs:text-3xl mb-1'>Can you join us?</h2>
+                            <div className='flex space-x-2 items-center text-center align-middle text-sm xs:text-base font-minerva select-none'>
                                 <Radio name='guestOneAttendance' id='accept-guest-one' value='accept' label='I&#39;ll be there!' required onChange={(e) => setGuestOneAttending(e.currentTarget.checked)} />
                                 <Radio name='guestOneAttendance' id='decline-guest-one' value='decline' label="Can't make it!" onChange={(e) => setGuestOneAttending(!e.currentTarget.checked)} />
                             </div>
                         </div>
-                        <div className="bg-white flex flex-col justify-center items-center p-4 w-10/12 max-w-xl">
-                            <div className='space-y-2.5 items-center text-center align-middle w-10/12'>
+                        <div className="bg-white flex flex-col justify-center items-center p-2 xs:p-4 w-10/12 max-w-xl">
+                            <div className=' space-y-1 xs:space-y-2.5 items-center text-center align-middle w-10/12 text-sm xs:text-base'>
                                 <TextInput id="guestOneName" autoComplete='name' placeholder='Full Name' defaultValue={guestOne || ""} required />
                                 <Select name="guestOneMain" id="guestOneMain" required={guestOneAttending} disabled={!guestOneAttending} placeholder='Choice for Main'>
                                     <option value={menuOptions.mains[0]}>{menuOptions.mains[0]}</option>
@@ -139,25 +139,25 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                     </div>
 
                     <button className='bg-white flex flex-col justify-center items-center mt-4 p-1 w-10/12 max-w-xl cursor-pointer' type='button' onClick={guests === 1 ? () => { setPlusOne("true"); setGusets(guests + 1); setGuestShown(2); } : () => setGuestShown(guestShown % guests + 1)}>
-                        <span className='flex w-full justify-center text-primary text-2xl relative'>
+                        <span className='flex w-full justify-center text-primary text-xl xs:text-2xl relative'>
                             {!guestTwo && !plusOne
                                 ? <><p>Add Guest</p><BsFillPersonPlusFill className='mx-2 my-auto' /></>
                                 : <><p>{guestTwo ? guestTwo : (plusOne ? "Plus One" : "Guest Two")} </p><BsChevronUp className={`text-lg mx-2 my-auto transition duration-300 ${guestShown === 2 && "-rotate-180"}`} />
-                                    {!guestTwo && plusOne && <span className="absolute right-2 top-1 text-primary cursor-pointer text-2xl" onClick={(e) => { e.stopPropagation(); setPlusOne(""); setGusets(1); setGuestShown(1); }}>< BsFillPersonDashFill className='mx-2 my-auto' /></span>}
+                                    {!guestTwo && plusOne && <span className="absolute right-2 top-1 text-primary cursor-pointer text-xl xs:text-2xl" onClick={(e) => { e.stopPropagation(); setPlusOne(""); setGusets(1); setGuestShown(1); }}>< BsFillPersonDashFill className='mx-2 my-auto' /></span>}
                                 </>
                             }
                         </span>
                     </button>
-                    <div className={` flex flex-col items-center transition-[height] ease-in-out duration-300 overflow-hidden w-full ${guestShown === 2 ? "h-70" : "h-0"}`}>
+                <div className={` flex flex-col items-center transition-[height] ease-in-out duration-300 overflow-hidden w-full ${guestShown === 2 ? "h-52 xs:h-72" : "h-px"}`}>
                         <div className="bg-white flex flex-col justify-center items-center w-10/12 max-w-xl">
-                            <h2 className='text-primary text-3xl mb-1'>Can you join us?</h2>
-                            <div className='flex space-x-2 items-center text-center align-middle font-minerva'>
+                            <h2 className='text-primary text-xl xs:text-3xl mb-1'>Can you join us?</h2>
+                            <div className='flex space-x-2 items-center text-center align-middle text-sm xs:text-base font-minerva'>
                                 <Radio name='guestTwoAttendance' id='accept-guest-two' value='accept' label='I&#39;ll be there!' required={guests === 2} onChange={(e) => setGuestTwoAttending(e.currentTarget.checked)} />
                                 <Radio name='guestTwoAttendance' id='decline-guest-two' value='decline' label="Can't make it!" onChange={(e) => setGuestTwoAttending(!e.currentTarget.checked)} />
                             </div>
                         </div>
-                        <div className="bg-white flex flex-col justify-center items-center p-4 w-10/12 max-w-xl">
-                            <div className='space-y-2.5 items-center text-center align-middle w-10/12'>
+                        <div className="bg-white flex flex-col justify-center items-center p-2 xs:p-4 w-10/12 max-w-xl">
+                            <div className='space-y-1 xs:space-y-2.5 items-center text-center align-middle w-10/12'>
                                 <TextInput id="guestTwoName" autoComplete='name' placeholder='Full Name' defaultValue={guestTwo || ""} required={guests === 2} />
                                 <Select name="guestTwoMain" id="guestTwoMain" required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Main'>
                                     <option value={menuOptions.mains[0]}>{menuOptions.mains[0]}</option>
@@ -179,11 +179,11 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
 
                 </div>
 
-                <button className='cursor-pointer bg-white text-primary px-6 py-0.5 mt-4 text-3xl' onSubmit={handleSubmit} onClick={() => firstInvalidRef.current = null} disabled={status === "loading"}>{status === "loading" ? "Sending..." : "Submit"}</button>
+                <button className='cursor-pointer bg-white text-primary px-6 py-0.5 mt-4 text-lg xs:text-3xl' onSubmit={handleSubmit} onClick={() => firstInvalidRef.current = null} disabled={status === "loading"}>{status === "loading" ? "Sending..." : "Submit"}</button>
             </form>
-            <div className={`text-4xl justify-center my-40 mx-5 animate-fade-in transition-all ${status === "done" ? "" : "hidden"}`}>
+            <div className={`xs:text-4xl justify-center my-40 mx-5 animate-fade-in transition-all ${status === "done" ? "" : "hidden"}`}>
                 <p >Thank you — your RSVP has been saved!</p>
-                <button className='cursor-pointer bg-white text-primary px-6 py-0.5 mt-4 text-3xl' onClick={() => setStatus("idle")}>Edit</button>
+                <button className='cursor-pointer bg-white text-primary px-6 py-0.5 mt-4 text-lg xs:text-3xl' onClick={() => setStatus("idle")}>Edit</button>
             </div>
 
 

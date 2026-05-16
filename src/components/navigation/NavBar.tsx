@@ -54,7 +54,7 @@ const NavBar = () => {
                             <li key={item.name} >
                                 <a
                                     href={item.href}
-                                    className=" text-xl md:text-2xl block w-full px-10 py-4 text-center text-white hover:text-secondary hover:bg-amber-50/5 rounded-2xl"
+                                    className=" xs:text-xl md:text-2xl block w-full xs:px-10 py-2 xs:py-4 text-center text-white hover:text-secondary hover:bg-amber-50/5 rounded-2xl"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.name}

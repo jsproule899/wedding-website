@@ -27,7 +27,7 @@ const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, req
           peer
           col-start-1 row-start-1
           appearance-none shrink-0
-          w-4 h-4 border-2 border-primary rounded-full
+           w-3 xs:w-4 h-3 xs:h-4 border-2 border-primary rounded-full
           focus:outline-none focus:ring-offset-0 focus:ring-2 focus:ring-primary/50
           disabled:border-primary/10"
         onChange={onChange}
@@ -40,7 +40,7 @@ const Radio = ({ defaultChecked, disabled, id, label, name, onChange, value, req
         className={cx(
           "pointer-events-none",
           "col-start-1 row-start-1",
-          "w-2 h-2 rounded-full peer-checked:bg-primary",
+          "xs:w-2 w-1.5 xs:h-2 h-1.5 rounded-full peer-checked:bg-primary",
           "peer-checked:peer-disabled:bg-primary/20"
         )}
       />

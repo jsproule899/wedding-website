@@ -1,8 +1,8 @@
 function Footer() {
     return (
-        <div className="mt-auto">
-            <p className="text-md leading-4 mt-4">Rachael & Joshua</p>
-            <p className="text-md leading-4">09.08.26</p>
+        <div className="text-xs xs:text-base leading-4 mt-auto pt-4">
+            <p>Rachael & Joshua</p>
+            <p>09.08.26</p>
         </div>
     )
 }

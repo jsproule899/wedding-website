@@ -31,7 +31,7 @@
   --color-primary: #b7503d;
   --color-secondary: #f9d2a7;
   --color-highlight: #ed8547;
-
+  --breakpoint-xs: 22rem;
   --animate-fade-in: fade-in 2s ease-in;
 
   @keyframes fade-in {
@@ -133,7 +133,7 @@
   text-align: center;
 }
 
-body{
+body {
   height: 100dvh;
   position: fixed;
   -webkit-overflow-scrolling: touch;

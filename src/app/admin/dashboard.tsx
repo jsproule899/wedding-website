@@ -3,10 +3,21 @@
 export default function Dashboard({ rsvps }: { rsvps: any[] }) {
   const attending = rsvps.filter(r => r.attendance === "accept").length;
   const notAttending = rsvps.filter(r => r.attendance === "decline").length;
-
+  const columns = [
+    { key: "guest_name", label: "Guest" },
+    { key: "attendance", label: "Attendance" },
+    { key: "main_choice", label: "Main" },
+    { key: "dessert_choice", label: "Dessert" },
+    { key: "dietary_restrictions", label: "Dietary" },
+    { key: "song_request", label: "Song" },
+    { key: "plus_one", label: "Plus One" },
+    {
+      key: "created_at",
+      label: "Submitted",
+      render: (value: string) => new Date(value).toLocaleDateString(),
+    },
+  ];
   function exportCSV() {
-    const headers = ["Guest Name", "Attendance", "Main Choice", "Dessert Choice", "Dietary Restrictions", "Song Request", "Submitted At"];
-
     const rows = rsvps.map(r => [
       r.guest_name,
       r.attendance,
@@ -14,12 +25,13 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
       r.dessert_choice || "",
       r.dietary_restrictions || "",
       r.song_request || "",
+      r.plus_one || "",
       new Date(r.created_at).toLocaleDateString(),
     ]);
 
     const csvContent =
       "data:text/csv;charset=utf-8," +
-      [headers, ...rows].map(e => e.join(";")).join("\n");
+      [columns.map(col => col.label), ...rows].map(e => e.join(";")).join("\n");
 
     const url = encodeURI(csvContent);
     const link = document.createElement("a");
@@ -29,12 +41,12 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
   }
 
   return (
-    <div className="w-10/12 m-auto">
+    <div className="mx-auto overflow-auto text-center">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 gap-4 mx-auto max-w-md mb-10">
-        <div className="border p-6 rounded-lg text-center">
+      <div className="grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 gap-4 align-middle mx-auto mb-10 w-xs">
+        <div className="border p-6 rounded-lg text-center ">
           <p className="text-4xl font-bold">{attending}</p>
           <p className="">Attending</p>
         </div>
@@ -53,29 +65,23 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
       </button>
 
       {/* Table */}
-      <table className=" m-auto border border-white">
+      <table className=" m-auto border border-white overflow-x-visible">
         <thead className="bg-white border text-primary ">
           <tr>
-            <th className="border border-white p-2">Guest Name</th>
-            <th className="border border-white p-2">Attendance</th>
-            <th className="border border-white p-2">Main Choice</th>
-            <th className="border border-white p-2">Dessert Choice</th>
-            <th className="border border-white p-2">Dietary Restrictions</th>
-            <th className="border border-white p-2">Song Request</th>
-            <th className="border border-white p-2">Submitted At</th>
+            {columns.map((col, index) => (
+              <th key={"col-" + index} className="border border-white p-2">{col.label}</th>
+            ))}
           </tr>
         </thead>
 
         <tbody>
           {rsvps.map(r => (
             <tr key={r.id} className="font-minerva text-white">
-              <td className="border p-2">{r.guest_name}</td>
-              <td className="border p-2">{r.attendance}</td>
-              <td className="border p-2">{r.main_choice}</td>
-              <td className="border p-2">{r.dessert_choice}</td>
-              <td className="border p-2">{r.dietary_restrictions}</td>
-              <td className="border p-2">{r.song_request}</td>
-              <td className="border p-2">{new Date(r.created_at).toLocaleDateString()}</td>
+              {columns.map((col) => (
+                <td key={col.key} className="border p-2">
+                  {col.render ? col.render(r[col.key]) : r[col.key]}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

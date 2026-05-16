@@ -5,6 +5,6 @@ export default async function AdminLayout({
 }) {
 
   return (
-    <div className="p-10 min-w-dvw">{children}</div>
+    <div className="mx-auto p-10 w-dvw">{children}</div>
   )
 }

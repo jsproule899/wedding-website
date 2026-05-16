@@ -20,6 +20,7 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
     const [guestTwoAttending, setGuestTwoAttending] = useState(true);
     const [guestShown, setGuestShown] = useState(1);
     const [guests, setGusets] = useState(1);
+    const [showPlusOneMessage, setShowPlusOneMessage] = useState(false);
     const firstInvalidRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -84,11 +85,22 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
             firstInvalidRef.current = target;
             const isGuestOne = target.id.toLowerCase().includes("one") || target.name.toLowerCase().includes("one");
             setGuestShown(isGuestOne ? 1 : 2);
+            !isGuestOne && plusOne && showPlusOneInfoMessage();
         }
     }
 
+    async function showPlusOneInfoMessage() {
+        setShowPlusOneMessage(true);
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        setShowPlusOneMessage(false);
+    }
+
     return (
-        <FadeSection id="RSVP" className='justify-center'>
+        <FadeSection id="RSVP" className='justify-center items-center'>
+            <div className={`fixed top-0 left-0 right-0 w-full h-10vh text-lg bg-white text-primary z-50 p-2 transition-all ease-in-out duration-600 ${showPlusOneMessage ? "translate-y-0 opacity-90" : "-translate-y-full opacity-0"}`}>
+                <p >You've got a Plus One, if you don't wish to bring a guest, click the <BsFillPersonDashFill className='inline text-center align-text-top text-base' /> icon to remove them.</p>
+            </div>
+
             <div className='mt-auto'>
                 <h1 className='text-7xl/10 mt-10'> RSVP </h1>
                 <p className='font-minerva text-xl'> by 9th July 2025</p>
@@ -107,7 +119,7 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                         </div>
                         <div className="bg-white flex flex-col justify-center items-center p-4 w-10/12 max-w-xl">
                             <div className='space-y-2.5 items-center text-center align-middle w-10/12'>
-                                <TextInput id="guestOneName" autoComplete='name' placeholder='Full Name' defaultValue={guestOne?.toLocaleUpperCase() ?? ""} required />
+                                <TextInput id="guestOneName" autoComplete='name' placeholder='Full Name' defaultValue={guestOne || ""} required />
                                 <Select name="guestOneMain" id="guestOneMain" required={guestOneAttending} disabled={!guestOneAttending} placeholder='Choice for Main'>
                                     <option value={menuOptions.mains[0]}>{menuOptions.mains[0]}</option>
                                     <option value={menuOptions.mains[1]}>{menuOptions.mains[1]}</option>
@@ -146,7 +158,7 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
                         </div>
                         <div className="bg-white flex flex-col justify-center items-center p-4 w-10/12 max-w-xl">
                             <div className='space-y-2.5 items-center text-center align-middle w-10/12'>
-                                <TextInput id="guestTwoName" autoComplete='name' placeholder='Full Name' defaultValue={guestTwo?.toLocaleUpperCase() ?? ""} required={guests === 2} />
+                                <TextInput id="guestTwoName" autoComplete='name' placeholder='Full Name' defaultValue={guestTwo || ""} required={guests === 2} />
                                 <Select name="guestTwoMain" id="guestTwoMain" required={guests === 2 && guestTwoAttending} disabled={!guestTwoAttending} placeholder='Choice for Main'>
                                     <option value={menuOptions.mains[0]}>{menuOptions.mains[0]}</option>
                                     <option value={menuOptions.mains[1]}>{menuOptions.mains[1]}</option>

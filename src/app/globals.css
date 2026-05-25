@@ -33,6 +33,17 @@
   --color-highlight: #ed8547;
   --breakpoint-xs: 22rem;
   --animate-fade-in: fade-in 2s ease-in;
+  --animate-fade-out: fade-out 2s ease-out;
+  --animate-grow-top-left: grow-top-left 1.25s ease-in,
+    wiggle 10s 1.25s ease-in-out infinite;
+  --animate-grow-top-right: grow-top-right 0.75s ease-in,
+    wiggle 5s 0.75s ease-in-out infinite;
+  --animate-grow-bottom-left: grow-bottom-left 1s ease-in,
+    wiggle 10s 1s ease-in-out infinite;
+  --animate-grow-bottom-right: grow-bottom-right 1.5s ease-in,
+    wiggle 10s 1.5s ease-in-out infinite;
+  --animate-wiggle: wiggle 5s ease-in-out infinite;
+  --animate-open-envelope: open-envelope 2s ease-in-out forwards; 
 
   @keyframes fade-in {
     from {
@@ -45,15 +56,16 @@
 
   }
 
-  --animate-grow-top-left: grow-top-left 1.25s ease-in,
-  wiggle 10s 1.25s ease-in-out infinite;
-  --animate-grow-top-right: grow-top-right 0.75s ease-in,
-  wiggle 5s 0.75s ease-in-out infinite;
-  --animate-grow-bottom-left: grow-bottom-left 1s ease-in,
-  wiggle 10s 1s ease-in-out infinite;
-  --animate-grow-bottom-right: grow-bottom-right 1.5s ease-in,
-  wiggle 10s 1.5s ease-in-out infinite;
-  --animate-wiggle: wiggle 5s ease-in-out infinite;
+  @keyframes fade-out {
+    from {
+      opacity: 100%;
+    }
+
+    to {
+      opacity: 0;
+    }
+
+  }
 
   @keyframes wiggle {
 
@@ -119,6 +131,12 @@
 
     }
   }
+
+  @keyframes open-envelope {
+    100% {
+      transform: rotateY(45deg);
+    }
+  }
 }
 
 :root {
@@ -139,7 +157,24 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+@layer components {
+  .paper {
+    position: relative;
+    background-color: #faf8e9;
+  }
 
+  .paper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    background-image: url('/images/paper.png');
+    background-size: contain;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    
+  }
+}
 
 
 @keyframes logo-spin {

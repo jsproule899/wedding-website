@@ -12,6 +12,7 @@ import Timeline from "@/components/Timeline";
 import RSVP from "@/components/RSVP";
 import Gifts from "@/components/Gifts";
 import { useSearchParams } from "next/navigation";
+import Envelope from "@/components/ui/Envelope";
 
 export default function Page() {
     const searchParams = useSearchParams();
@@ -22,6 +23,7 @@ export default function Page() {
 
     return (
         <div className='relative overflow-y-scroll h-screen min-w-dvw snap-y snap-mandatory scroll-auto'>
+            <Envelope />
             <BackgroundImage>
                 <div id="container" className="flex flex-col mb-10">
                     <NavBar />

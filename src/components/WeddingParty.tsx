@@ -65,19 +65,19 @@ const groomsmen = [
     {
         name: "Stephen Sproule",
         role: "Bestman",
-        tagline: "Beyoncé's #1 fan, future riverdancer and karaoke king",
+        tagline: "Beyoncé's #1 fan and future riverdancer",
         img: "/images/stephen.jpg"
     },
     {
         name: "Paul Ó Gallachóir",
         role: "Groomsman",
-        tagline: "whisky connoisseur, Dog Whisperer and music maestro",
+        tagline: "whisky connoisseur and Dog Whisperer",
         img: "/images/paul.jpg"
     },
     {
         name: "Aaron Sproule",
         role: "Groomsman",
-        tagline: "Roman Empire enthusiast, muay thai fighter and sunbed addict",
+        tagline: "Muay thai fighter and sunbed addict",
         img: "/images/aaron.jpg"
     }
 ]
@@ -91,7 +91,7 @@ function Card({ props }: { props: CardProps }) {
             <span className="text-start my-auto text-primary py-2">
                 <h1 className="text-xl/4 xs:text-2xl/5 text-primary">{props.name}</h1>
                 <h2 className="font-minerva text-xs xs:text-sm font-semibold">{props.role}</h2>
-                <p className="font-minerva italic text-xs xs:text-sm">{props.tagline}</p>
+                <p className="font-minerva italic text-xs xs:text-sm text-wrap mr-1" >{props.tagline}</p>
             </span>
 
         </div>

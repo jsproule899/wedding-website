@@ -41,7 +41,7 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
   }
 
   return (
-    <div className="mx-auto overflow-auto text-center">
+    <div className="mx-auto text-center">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
       {/* Stats */}
@@ -65,7 +65,7 @@ export default function Dashboard({ rsvps }: { rsvps: any[] }) {
       </button>
 
       {/* Table */}
-      <table className=" m-auto border border-white overflow-x-visible">
+      <table className=" m-auto border border-white overflow-x-auto">
         <thead className="bg-white border text-primary ">
           <tr>
             {columns.map((col, index) => (

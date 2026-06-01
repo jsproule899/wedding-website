@@ -103,7 +103,7 @@ function RSVP({ guestOne, guestTwo, plusOne, setPlusOne }: { guestOne: string | 
 
             <div className='mt-auto'>
                 <h1 className='text-5xl/8 xs:text-7xl/10 xs:mt-10'> RSVP </h1>
-                <p className='font-minerva xs:text-xl'> by 9th July 2025</p>
+                <p className='font-minerva xs:text-xl'> by 9th July 2026</p>
             </div>
             <form onSubmit={handleSubmit} onInvalid={handleInvalid} className={`${status == "done" && "hidden"}`}>
 
